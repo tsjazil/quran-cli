@@ -21,3 +21,5 @@ Enter prefered Surah Number <br>
 Enter prefered Ayah number or range eg [1,4] <br>
 
 
+
+
