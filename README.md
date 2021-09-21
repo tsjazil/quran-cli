@@ -1,4 +1,4 @@
-## 💞 Qurancli
+## 💞 quran-cli
 
 English translation of Quran based on Saheeh international which can be accesed from terminal <br>
 I have used bash only to keep the script simple and minimal
@@ -19,4 +19,5 @@ cd quran-cli && chmod +x install.sh && ./install.sh
 Enter ``qurancli`` in your terminal <br>
 Enter prefered Surah Number <br>
 Enter prefered Ayah number or range eg [1,4] <br>
+
 
