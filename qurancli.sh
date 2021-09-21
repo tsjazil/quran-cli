@@ -1,0 +1,83 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+NC='\033[0m'
+bold=$(tput bold)
+
+#Entering Ayah No
+processa(){
+    printf '\e[32mEnter Ayah Number  : \e[0m'
+    read ayah
+
+}
+
+
+#Error Message
+error(){
+    echo -e "${RED}${bold}114 Surahs are present in Quran${NC}"
+
+}
+
+
+#Error message for entering wrong ayah number
+ayaherror(){
+    
+    echo -e "${RED}${bold} $ayahlimit Ayahs are present in this surah ${NC}"
+
+}
+
+
+
+#For Printing full Surah
+
+ayahawk(){
+    ayahf=$(awk -v a="$surah" '$1==a' regnew.tsv | awk '{$1=""; print $0}'|awk '{print substr($0, 2)}')
+
+    ayahc=$(printf "$ayahf" | awk '{sub("^", "[", $1)}; 1'| awk '{sub("$", "] ", $1)}; 1' |awk -v bld=$(tput bold) -v rst=$(tput sgr0) '{for(i=1;i<=NF;i++) printf bld$i" "; print "" }')
+
+    ayahp=$(printf "$ayahc" | awk '{print $0,"\n"}')
+    printf "$ayahp" | less 
+}
+
+
+#For printing Ayahs of surah
+
+ayahsed(){
+ayahf=$(awk -v a="$surah" '$1==a' regnew.tsv | awk '{$1=""; print $0}'|awk '{print substr($0, 2)}' | sed ''"$ayah"' !d' )
+    
+
+    ayahc=$(printf "$ayahf" | awk '{sub("^", "[", $1)}; 1'| awk '{sub("$", "] ", $1)}; 1' |awk -v bld=$(tput bold) -v rst=$(tput sgr0) '{for(i=1;i<=NF;i++) printf bld$i" "; print "" }')
+    
+    ayahp=$(printf "$ayahc" | awk '{print $0,"\n"}' )
+
+    printf "$ayahp" | less
+
+}
+
+
+
+#Working
+#-------
+
+printf '\e[32mEnter Surah Number : \e[0m'
+read surah 
+
+#calculating total ayahs of surah
+
+ayahlimit=$(awk -v a="$surah" '$1==a' regnew.tsv | awk '{$1=""; print $0}'|awk '{print substr($0, 2)}' |awk 'END{print}'  | awk '{print $1}')
+
+
+
+if [[ $surah -gt 114 ]]; then
+    error
+else 
+    processa
+     if [ "$ayah" == "f" ]; then
+            ayahawk
+     elif [[ $ayah -gt $ayahlimit ]];then 
+           echo -e "${RED}${bold}$ayahlimit Ayahs are present in this surah, Try numbers between the range ${NC}"
+     else
+            ayahsed
+    fi
+fi
+
