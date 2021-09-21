@@ -1,4 +1,4 @@
-## 💞 quran-cli
+## ✨ quran-cli
 
 English translation of Quran based on Saheeh international which can be accesed from terminal <br>
 I have used bash only to keep the script simple and minimal
