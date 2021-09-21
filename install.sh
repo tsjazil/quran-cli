@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cp quran.tsv $HOME/.local/share/
-sudo cp qurancli /usr/local/bin/
+sudo cp quran-cli /usr/local/bin/
 cd /usr/local/bin
-sudo chmod +x qurancli 
+sudo chmod +x quran-cli 
 
