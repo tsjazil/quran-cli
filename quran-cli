@@ -36,7 +36,7 @@ ayahawk(){
     ayahc=$(printf "$ayahf" | awk '{sub("^", "[", $1)}; 1'| awk '{sub("$", "] ", $1)}; 1' |awk -v bld=$(tput bold) -v rst=$(tput sgr0) '{for(i=1;i<=NF;i++) printf bld$i" "; print "" }')
 
     ayahp=$(printf "$ayahc" | awk '{print $0,"\n"}')
-    printf "$ayahp" | less 
+    printf "$ayahp" | less -r 
 }
 
 
@@ -50,7 +50,7 @@ ayahf=$(awk -v a="$surah" '$1==a' $HOME/.local/share/quran.tsv | awk '{$1=""; pr
     
     ayahp=$(printf "$ayahc" | awk '{print $0,"\n"}' )
 
-    printf "$ayahp" | less
+    printf "$ayahp" | less -r
 
 }
 
