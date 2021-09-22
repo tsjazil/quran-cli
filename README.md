@@ -16,9 +16,9 @@ cd quran-cli && chmod +x install.sh && ./install.sh
 ```
 🌀 working 
 --
-Enter ``quran-cli`` in your terminal <br>
+type ``quran-cli`` in your terminal <br>
 Enter prefered Surah Number <br>
-Enter prefered Ayah number or range eg [1,4] <br>
+Enter prefered Ayah number or range eg [1,4]  if full surah is needed type `f` 
 
 
 
